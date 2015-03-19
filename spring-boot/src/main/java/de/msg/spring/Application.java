@@ -42,9 +42,6 @@ public class Application {
 	private String helloWorld;
 	
 	
-	
-	
-	
 	@RequestMapping(value="helloWorld")
 	public @ResponseBody String helloWorld() {
 		logger.debug("helloWorld");

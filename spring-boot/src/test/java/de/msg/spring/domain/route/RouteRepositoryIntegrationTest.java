@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.ActiveProfiles;
 
 import de.msg.spring.domain.core.AbstractIntegrationTest;
 import de.msg.spring.domain.route.repository.RouteRepository;
@@ -24,7 +25,6 @@ import de.msg.spring.domain.route.repository.RouteRepository;
 * @author Michael Schäfer
 * 
 * */
-
 public class RouteRepositoryIntegrationTest extends AbstractIntegrationTest{
 
 	@Autowired
@@ -44,7 +44,7 @@ public class RouteRepositoryIntegrationTest extends AbstractIntegrationTest{
 		
 		Route route = routeRepository.save(RouteTestTexture.createSimpleRoute());
 		
-		//Assert.assertTrue(routeRepository.findByDestination("Koeln").iterator().hasNext());
+		Assert.assertTrue(routeRepository.findByDestination("Koeln").iterator().hasNext());
 		
 	}
 

@@ -1,6 +1,8 @@
 package de.msg.spring;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.repository.query.spi.EvaluationContextExtension;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -11,6 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 **  Copyright (c) 2014 msg systems ag (http://www.msg-systems.com/)
 **  All Rights Reserved.
 */
+
+import de.msg.spring.security.SecurityEvaluationContextExtension;
 
 
 /**
@@ -41,6 +45,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	      .httpBasic().and().authorizeRequests().antMatchers(HttpMethod.POST, "/routes/**").
 	      hasRole("ADMIN").antMatchers(HttpMethod.GET, "/routes/**").hasRole("ADMIN").and().csrf().disable();
 	  }
+	
+	
+	
+	 @Bean
+	 EvaluationContextExtension securityExtension() {
+	        return new SecurityEvaluationContextExtension();
+	    }
 	
 	
 }

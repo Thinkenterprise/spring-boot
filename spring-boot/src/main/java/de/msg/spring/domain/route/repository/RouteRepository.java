@@ -21,6 +21,11 @@ import de.msg.spring.domain.route.projection.RouteProjection;
 
 /**
 * 
+*  @Query("select o from BusinessObject o where o.owner.emailAddress like "+
+		      "?#{hasRole('ROLE_ADMIN') ? '%' : principal.emailAddress}")
+	
+* 
+* 
 * @author Michael Schäfer
 * 
 * */
@@ -32,6 +37,8 @@ public interface RouteRepository extends CrudRepository<Route, Long>, RouteRepos
 
 	public Iterable<Route> findByDestination(@Param("destination") String destination);
 	
+	
+	//@Query("select r from Route r where ?#{hasRole('ROLE_ADMIN') r.destination = :destination")
 	@Query("select r from Route r where r.destination = :destination")
 	public Iterable<Route> findByDestinationWithQuery(@Param("destination") String destination); 
 	

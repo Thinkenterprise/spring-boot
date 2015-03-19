@@ -35,17 +35,13 @@ public class RouteTestTexture {
 		route.addFlight(flight);
 		flight = new Flight(156.01, Calendar.getInstance().getTime() );
 		route.addFlight(flight);
-		
-		
-		
+				
 		
 		route = new Route("LH001", "Bonn", "Berlin");
 		
 		flight = new Flight(200.45, Calendar.getInstance().getTime() );
 		route.addFlight(flight);
-		
-				
-		
+							
 		return route;
 		
 		
